@@ -1,29 +1,45 @@
 <template>
+  <div class="">
+    <transition name="modal">
+      <div class="modal-mask">
+        <div class="modal-wrapper">
+          <div class="modal-container">
 
-    <div>
-      <button id="show-modal" @click="showModal = true">Show Modal</button>
-      <!-- use the modal component, pass in the prop -->
-      <modal v-if="showModal" @close="showModal = false">
-        <!--
-          you can use custom content here to overwrite
-          default content
-        -->
-        <h3 slot="header">custom header</h3>
+            <div class="modal-header">
+              <slot name="header">
+                default header
+              </slot>
+            </div>
 
-      </modal>
-    </div>
+            <div class="modal-body">
+              <slot name="body">
+                default body
+              </slot>
+            </div>
 
+            <div class="modal-footer">
+              <slot name="footer">
+                default footer
+                <button class="modal-default-button button is-danger" @click="$emit('close')">
+                  X
+                </button>
+              </slot>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
+  </div>
 </template>
 
 <script>
-import modal from './modal.vue'
+
 export default {
   components: {
-    'modal': modal
   },
   data () {
     return {
-      showModal: false
+
     }
   }
 }
@@ -32,7 +48,7 @@ export default {
 <style lang="scss" src="bulma"></style>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-modal-mask {
+.modal-mask {
 position: fixed;
 z-index: 9998;
 top: 0;

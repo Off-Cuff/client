@@ -33,7 +33,7 @@ export default{
           console.log('here')
           this.timeLeft = 'GO!'
           clearInterval(timerId)
-          this.$router.push({ name: 'About' })
+          this.$router.push({ name: 'Slides' })
         }
       }, 1000)
     }

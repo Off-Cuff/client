@@ -3,7 +3,9 @@ import Router from 'vue-router'
 import QuickStart from '@/components/body/slideshow-components/quick-start-home/quick-start-home.vue'
 import AboutPage from '@/components/body/main/about/About.vue'
 import Home from '@/components/body/Main/home/Landing.vue'
+import Slides from '@/components/body/slideshow-components/slideshow/slideshow-slides.vue'
 import Timer from '@/components/body/slideshow-components/quick-start-home/quick-start-timer.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -27,7 +29,11 @@ export default new Router({
       path: '/Timer',
       name: 'Timer',
       component: Timer
+    },
+    {
+      path: '/Slides',
+      name: 'Slides',
+      component: Slides
     }
-
   ]
 })
