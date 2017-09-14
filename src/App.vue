@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import Header from './components/Body/Header.vue'
-import Footer from './components/Body/Footer.vue'
+import Header from './components/Body/Main/Header.vue'
+import Footer from './components/Body/Main/Footer.vue'
 
 export default {
   data () {

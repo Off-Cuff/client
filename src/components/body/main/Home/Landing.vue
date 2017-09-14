@@ -10,9 +10,12 @@
             <span>A new way to Train</span>
           </h1>
           <div class="landing-buttons">
-            <button type="button" name="button is-primary" class="button is-primary is-large">
-              Quick Start
-            </button>
+            <router-link to="/quickstart" class="button is-primary is-large">
+
+                Quick Start
+
+            </router-link>
+            <!-- <router-link to="/about"><\About\></router-link> -->
             <span class="space"></span>
             <button type="button" name="button is-primary" class="button is-primary is-large">
               Premium
@@ -20,7 +23,7 @@
           </div>
       </div>
 
-      <img class="landingBackground" src="../../assets/presentation-pic.jpg" alt="thinking">
+      <img class="landingBackground" src="../../../../assets/presentation-pic.jpg" alt="thinking">
     </div>
   </template>
 <script>

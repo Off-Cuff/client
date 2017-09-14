@@ -11,7 +11,7 @@
             </div>
             <div class="navbar-end">
               <!-- navbar items -->
-                <h1 class="navbar-item menu is-size-5">
+                <h1 class="navbar-item menu is-size-5 has-text-weight-semibold">
                   <router-link to="/about"><\About\></router-link>
 
                   </a> -- <a href="#"> <\Premium\>
@@ -43,6 +43,7 @@ export default {
   h1{
     margin-top:-3%;
     opacity: inherit;
+    padding-right: 15px;
   }
   header{
     margin-top: 1vh;
@@ -56,7 +57,7 @@ export default {
   .menu{
     /*padding-left:35%;*/
     padding-top: 7%;
-    padding-right:10.5em;
+    padding-right: 10em;
     padding-bottom: 5%;
     letter-spacing: 3px;
   }

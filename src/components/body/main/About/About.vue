@@ -23,19 +23,16 @@
           What if you had to present someone else's presentation this time, with no preparation.
           This is exactly the feeling you'll get when you present from the deck.
           <ul>
-            <li>Each deck is made up of 3 randomly generated pictures</li>
-            <li>Each slide/picture will be on display for 30 seconds</li>
-            <li>The goal is to improvise</li>
-            <li>intro, slide 1, body, slide 2, conclusion, slide 3</li>
+            <li>Each random deck is made up of 3 pictures</li>
+            <li>Each picture will be on display for 30 seconds</li>
+            <li>The goal is to improvise though the slides</li>
           </ul>
         </p>
       </div>
     </div>
-
-
-
   </div>
 </template>
+
 <script>
 export default {
   data () {
