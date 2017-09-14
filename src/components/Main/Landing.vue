@@ -10,11 +10,11 @@
             <span>A new way to Train</span>
           </h1>
           <div class="landing-buttons">
-            <button type="button" name="button is-primary" class="button is-primary">
+            <button type="button" name="button is-primary" class="button is-primary is-large">
               Quick Start
             </button>
             <span class="space"></span>
-            <button type="button" name="button is-primary" class="button is-primary">
+            <button type="button" name="button is-primary" class="button is-primary is-large">
               Premium
             </button>
           </div>
@@ -43,7 +43,8 @@ export default {
   }
 img{
   z-index:3;
-  margin-top: -25%;
+  padding-top: -10px;
+  margin-top: -22%;
   margin-bottom: -1%;
 }
 .image {
@@ -79,7 +80,7 @@ h1 span.spacer {
   margin-top: 7%;
 }
 .space{
-  padding:inherit;
+  padding:4vh;;
 }
 
 </style>

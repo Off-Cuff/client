@@ -11,17 +11,17 @@
             </div>
             <div class="navbar-end">
               <!-- navbar items -->
-                <h1 class="navbar-item menu">
-                  <a href="#"> <\About\>
+                <h1 class="navbar-item menu is-size-5">
+                  <router-link to="/about"><\About\></router-link>
+
                   </a> -- <a href="#"> <\Premium\>
-                  </a> --||--
-                  <a href="#"><\log-in\></a>
+                  </a> --
+                  <a href="#"><\Log-in\></a>
                 </h1>
             </div>
           </div>
       </nav>
     </header>
-
   </div>
 </template>
 
@@ -55,10 +55,10 @@ export default {
   }
   .menu{
     /*padding-left:35%;*/
-    padding-right: 45%;
+    padding-top: 7%;
+    padding-right:10.5em;
     padding-bottom: 5%;
     letter-spacing: 3px;
-    word-spacing: 5px;
   }
   a{
     padding: 0, 2%;
