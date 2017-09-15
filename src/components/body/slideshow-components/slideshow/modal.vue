@@ -4,25 +4,35 @@
       <div class="modal-mask">
         <div class="modal-wrapper">
           <div class="modal-container">
-
+            <!-- <ul id="v-for-object" class="demo">
+              <li v-for="value in object">
+                {{ value }}
+              </li>
+            </ul> -->
             <div class="modal-header">
-              <slot name="header">
-                default header
-              </slot>
+              <button class="modal-default-button button is-danger" @click="$emit('close')">
+                X
+              </button>
             </div>
 
-            <div class="modal-body">
+            <div  class="modal-body slide-pictures">
+
               <slot name="body">
-                default body
+                <img v-show="object.visibility1" src="https://unsplash.it/1920/1080/?random" alt="a random - flowers and bees?">
               </slot>
-            </div>
 
+              <slot name="body">
+                <img v-show="object.visibility2" src="https://unsplash.it/1900/1080/?random" alt="a random - a dog and his bone">
+              </slot>
+
+              <slot name="body">
+                <img v-show="object.visibility3" src="https://unsplash.it/1800/1080/?random" alt="a random - a curious pilot">
+              </slot>
+
+            </div>
             <div class="modal-footer">
               <slot name="footer">
-                default footer
-                <button class="modal-default-button button is-danger" @click="$emit('close')">
-                  X
-                </button>
+
               </slot>
             </div>
           </div>
@@ -37,9 +47,49 @@
 export default {
   components: {
   },
+  mounted () {
+    this.timer()
+  },
   data () {
     return {
-
+      object: {
+        visibility1: true,
+        visibility2: false,
+        visibility3: false
+      }
+    }
+  },
+  created () {
+    // this.$http.get('')
+  },
+  methods: {
+    slides: function () {
+      console.log('hello form the slides method!')
+    },
+    timer () {
+      this.timeLeft = 9
+      var timerId = setInterval(() => {
+        if (this.timeLeft <= 9 && this.timeLeft > 6) {
+          this.timeLeft--
+        } else if (this.timeLeft <= 6 && this.timeLeft > 3) {
+          console.log(this.timeLeft)
+          console.log('2 is === 60 ', this.timeLeft)
+          if (this.timeLeft === 6) {
+            this.object.visibility1 = !this.object.visibility1
+            this.object.visibility2 = !this.object.visibility2
+          }
+          this.timeLeft--
+        } else if (this.timeLeft <= 3 && this.timeLeft !== 0) {
+          if (this.timeLeft === 3) {
+            this.object.visibility2 = !this.object.visibility2
+            this.object.visibility3 = !this.object.visibility3
+          }
+          this.timeLeft--
+        } else if (this.timeLeft === 0) {
+          clearInterval(timerId)
+          this.$emit('close')
+        }
+      }, 1000)
     }
   }
 }

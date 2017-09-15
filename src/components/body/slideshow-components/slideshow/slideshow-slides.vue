@@ -1,7 +1,6 @@
 <template>
-
     <div>
-      <button id="show-modal" @click="showModal = true">Show Modal</button>
+      <button class="button is-primary" id="show-modal" @click="showModal = true">Try again!</button>
       <!-- use the modal component, pass in the prop -->
       <modal v-if="showModal" @close="showModal = false">
         <!--
@@ -12,7 +11,6 @@
 
       </modal>
     </div>
-
 </template>
 
 <script>
@@ -23,7 +21,7 @@ export default {
   },
   data () {
     return {
-      showModal: false
+      showModal: true
     }
   }
 }
@@ -32,7 +30,7 @@ export default {
 <style lang="scss" src="bulma"></style>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-modal-mask {
+.modal-mask {
 position: fixed;
 z-index: 9998;
 top: 0;

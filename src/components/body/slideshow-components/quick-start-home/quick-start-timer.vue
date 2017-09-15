@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <div class="block">
-        <p class="digit">{{ timeLeft}}</p>
+        <p class="digit">{{ timeLeft }}</p>
         <p class="text">Seconds</p>
     </div>
   </div>
@@ -9,9 +9,6 @@
 
 <script>
 export default{
-  created () {
-
-  },
   mounted () {
     // console.log(this.$router)
     this.timer()
@@ -54,7 +51,6 @@ export default{
   flex-direction: column;
   margin: 20px;
 }
-
 .text {
   color: #1abc9c;
   font-size: 40px;
@@ -64,7 +60,6 @@ export default{
   margin-bottom: 10px;
   text-align: center;
 }
-
 .digit {
   padding-top: 1%;
   /*padding-bottom: 2%;*/
@@ -75,7 +70,6 @@ export default{
   margin: 10px;
   text-align: center;
 }
-
 .text{
   padding-bottom: 2%;
 }
