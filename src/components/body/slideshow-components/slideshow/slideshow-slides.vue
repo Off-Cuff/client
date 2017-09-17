@@ -1,13 +1,16 @@
 <template>
     <div>
-      <button class="button is-primary" id="show-modal" @click="showModal = true">Try again!</button>
+
+      <button class="button is-primary topBtmPad is-large" id="show-modal" @click="showModal = true">Try again!</button>
+        <div class="landing-buttons">
+        <router-link to="/" class="button is-primary is-large">
+
+            Home
+
+        </router-link>
+      </div>
       <!-- use the modal component, pass in the prop -->
       <modal v-if="showModal" @close="showModal = false">
-        <!--
-          you can use custom content here to overwrite
-          default content
-        -->
-        <h3 slot="header">custom header</h3>
 
       </modal>
     </div>
@@ -16,20 +19,28 @@
 <script>
 import modal from './modal.vue'
 export default {
-  components: {
-    'modal': modal
-  },
   data () {
     return {
       showModal: true
     }
+  },
+  components: {
+    'modal': modal
   }
 }
+
 </script>
 
 <style lang="scss" src="bulma"></style>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.landing-buttons{
+  margin-top: 1%;
+  margin-bottom: 10%;
+}
+.topBtmPad{
+  margin-top: 15%;
+}
 .modal-mask {
 position: fixed;
 z-index: 9998;

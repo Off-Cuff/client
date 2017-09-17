@@ -4,37 +4,30 @@
       <div class="modal-mask">
         <div class="modal-wrapper">
           <div class="modal-container">
-            <!-- <ul id="v-for-object" class="demo">
-              <li v-for="value in object">
-                {{ value }}
-              </li>
-            </ul> -->
             <div class="modal-header">
-              <button class="modal-default-button button is-danger" @click="$emit('close')">
+              <button class="modal-default-button button is-danger" @click="$emit('close'), stopTimer()">
                 X
               </button>
             </div>
 
             <div  class="modal-body slide-pictures">
 
-              <slot name="body">
-                <img v-show="object.visibility1" src="https://unsplash.it/1920/1080/?random" alt="a random - flowers and bees?">
-              </slot>
+                <img v-show="object.visibility1" :src="this.p1" alt="a random - flowers and bees?">
 
-              <slot name="body">
-                <img v-show="object.visibility2" src="https://unsplash.it/1900/1080/?random" alt="a random - a dog and his bone">
-              </slot>
+                <img v-show="object.visibility2" :src="this.p2" alt="a random - a dog and his bone">
 
-              <slot name="body">
-                <img v-show="object.visibility3" src="https://unsplash.it/1800/1080/?random" alt="a random - a curious pilot">
-              </slot>
+                <img v-show="object.visibility3" :src="this.p3" alt="a random - a curious pilot">
 
             </div>
+            <!-- <div class="">
+              <ul>
+                <li v-for="src in srcs">{{ src }}</li>
+              </ul>
+            </div> -->
             <div class="modal-footer">
-              <slot name="footer">
-
-              </slot>
+                {{ timeLeft }}
             </div>
+
           </div>
         </div>
       </div>
@@ -43,15 +36,16 @@
 </template>
 
 <script>
-
 export default {
-  components: {
-  },
-  mounted () {
-    this.timer()
-  },
   data () {
     return {
+      timerInterval: 0,
+      timeLeft: '-',
+      load: false,
+      img1: '',
+      p1: '',
+      p2: '',
+      p3: '',
       object: {
         visibility1: true,
         visibility2: false,
@@ -59,37 +53,66 @@ export default {
       }
     }
   },
+  mounted () {
+    this.p1 = this.imgPath()
+    this.p2 = this.imgPath()
+    this.p3 = this.imgPath()
+  },
   created () {
-    // this.$http.get('')
+    this.timer()
+  },
+  destroy () {
+    console.log('destroyed??')
+    clearInterval(this.timerInterval)
+    this.stopTimer()
   },
   methods: {
-    slides: function () {
-      console.log('hello form the slides method!')
+    // loaded: function () {
+    //   console.log('in loaded')
+    //   document.onreadystatechange = function () {
+    //     if (document.readyState === 'complete') {
+    //       this.timer()
+    //       console.log('YES!')
+    //     }
+    //   }
+    // },
+    imgPath: function () {
+      let x = 1100
+      let y = 1200
+      let i = Math.floor(Math.random() * ((y - x) + 1) + x)
+      let j = Math.round(i / 2)
+      return 'https://unsplash.it/' + i + '/' + j + '/?random'
     },
     timer () {
-      this.timeLeft = 9
-      var timerId = setInterval(() => {
-        if (this.timeLeft <= 9 && this.timeLeft > 6) {
+      this.timeLeft = 90
+      console.log('90')
+      this.timerInterval = setInterval(() => {
+        console.log('hit 1')
+        if (this.timeLeft <= 90 && this.timeLeft > 60) {
           this.timeLeft--
-        } else if (this.timeLeft <= 6 && this.timeLeft > 3) {
-          console.log(this.timeLeft)
-          console.log('2 is === 60 ', this.timeLeft)
-          if (this.timeLeft === 6) {
+        } else if (this.timeLeft <= 60 && this.timeLeft > 30) {
+          if (this.timeLeft === 60) {
             this.object.visibility1 = !this.object.visibility1
             this.object.visibility2 = !this.object.visibility2
+            console.log('hit 2')
           }
           this.timeLeft--
-        } else if (this.timeLeft <= 3 && this.timeLeft !== 0) {
-          if (this.timeLeft === 3) {
+        } else if (this.timeLeft <= 30 && this.timeLeft !== 0) {
+          if (this.timeLeft === 30) {
             this.object.visibility2 = !this.object.visibility2
             this.object.visibility3 = !this.object.visibility3
+            console.log('hit 3')
           }
           this.timeLeft--
         } else if (this.timeLeft === 0) {
-          clearInterval(timerId)
+          console.log('hit D')
+          clearInterval(this.timerInterval)
           this.$emit('close')
         }
       }, 1000)
+    },
+    stopTimer () {
+      clearInterval(this.timerInterval)
     }
   }
 }
@@ -116,6 +139,7 @@ vertical-align: middle;
 }
 
 .modal-container {
+overflow:scroll;
 width: 95%;
 height: 95%;
 margin: 0px auto;

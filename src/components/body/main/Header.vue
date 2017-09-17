@@ -40,6 +40,9 @@ export default {
 <!-- <style lang="scss" src="bulma"></style> -->
 
 <style scoped>
+  .title{
+    padding-left: 15%
+  }
   h1{
     margin-top:-3%;
     opacity: inherit;

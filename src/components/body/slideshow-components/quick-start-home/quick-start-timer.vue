@@ -27,10 +27,9 @@ export default{
         if (this.timeLeft !== 0) {
           this.timeLeft--
         } else {
-          console.log('here')
-          this.timeLeft = 'GO!'
           clearInterval(timerId)
           this.$router.push({ name: 'Slides' })
+          this.timer()
         }
       }, 1000)
     }

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <app-header v-bind:title = 'title'></app-header>
-    <router-view ></router-view>
+    <router-view></router-view>
     <app-footer v-bind:title = 'title'></app-footer>
   </div>
 </template>
@@ -20,7 +20,6 @@ export default {
     'app-header': Header,
     'app-footer': Footer
   }
-
 }
 </script>
 

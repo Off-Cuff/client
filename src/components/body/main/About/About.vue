@@ -3,6 +3,7 @@
     <div class="columns">
       <div class="column">
         <h1 class=''>Let me tell you something about Off-the-Cuff.</h1>
+
         <p>
           OTC is a public speaking training tool.
           The end goal of OTC is to help you feel comfortable with the uncomfortable.
@@ -27,6 +28,11 @@
             <li>Each picture will be on display for 30 seconds</li>
             <li>The goal is to improvise though the slides</li>
           </ul>
+          <router-link to="/quickstart" class="button is-primary is-large">
+
+              Quick Start
+
+          </router-link>
         </p>
       </div>
     </div>

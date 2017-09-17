@@ -1,5 +1,5 @@
 <template>
-  <div class="vue-footer footer">
+  <div class="vue-footer footer hero-foot">
     <footer>
 
           <p>
@@ -10,7 +10,7 @@
 
             || Copyright 2017 ||
 
-            <a href="https://github.com/Off-Cuff" class="green-a">
+            <a href="https://www.ajdevs.com" class="green-a">
               Austin Johnston
             </a>
 

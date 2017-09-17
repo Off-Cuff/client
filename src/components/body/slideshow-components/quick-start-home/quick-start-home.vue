@@ -5,13 +5,18 @@
       <div class="title">
         <span>Quick Start</span>
       </div>
-      <span class="card-content">
+      <span class="card-content container ">
         By pressing start, you are starting a new session.
         A session last exactly 1 minute and 30 seconds.
         It is basically a slideshow of random images. Think of your last power point presentation, but better.
         You will get a count down from 3.
         Then the slide timer starts as a random picture comes on the screen;
-        that's your que, TALK!
+        that's your que, TALK! </br></br>
+
+          (for best results,
+          go <strong class="has-text-weight-bold">fullscreen</strong>
+          in your browser during the presentation/session. Press control+command+F while in the browser)
+
       </span>
     </div>
     <footer class="card-footer">
@@ -30,7 +35,7 @@
 export default {
   data () {
     return {
-
+      showImages: false
     }
   }
 }
