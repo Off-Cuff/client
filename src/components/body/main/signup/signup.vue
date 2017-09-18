@@ -70,8 +70,8 @@ export default {
         name: this.signupCreds.name,
         email: this.signupCreds.email,
         password: this.signupCreds.password
-      }, {headers: {'Content-Type': 'application/json'}}).then(function (data) {
-        console.log(data)
+      }).then(function (data) {
+        console.log('data: ', data)
       })
     }
   }

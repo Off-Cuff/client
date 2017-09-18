@@ -7,6 +7,7 @@ import Signup from '@/components/body/Main/signup/signup.vue'
 import Login from '@/components/body/Main/login/login.vue'
 import Slides from '@/components/body/slideshow-components/slideshow/slideshow-slides.vue'
 import Timer from '@/components/body/slideshow-components/quick-start-home/quick-start-timer.vue'
+import Profile from '@/components/body/main/user/profile.vue'
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ export default new Router({
       path: '/Signup',
       name: 'Signup',
       component: Signup
+    },
+    {
+      path: '/host/:id/profile',
+      name: 'profile',
+      component: Profile
     }
   ]
 })

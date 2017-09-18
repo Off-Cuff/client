@@ -28,12 +28,15 @@
       <div class="column is-one-third"></div>
       <div class="column">
         <p class="control has-text-centered">
-          <button @click.prevent="login" class="button is-primary is-large login-btn">
-            Login
-          </button>
+
+            <!-- <router-link class="button is-primary is-large login-btn" to=""></router-link> -->
+
           <br>
           <div class="signup-lnk">
-            <router-link to="/Signup"><\hey, need to sign-up?\></router-link>
+            <button @click.prevent="login" class="button is-primary is-large login-btn">
+              Login
+              <router-link :to="{name: 'profile', params: {id: userId}}"></router-link>
+            </button>
           </div>
         </p>
       </div>
@@ -50,18 +53,18 @@ export default {
       loginCreds: {
         email: '',
         password: ''
-      }
+      },
+      userId: ''
     }
   },
   methods: {
     login: function () {
-      console.log('in')
-      console.log('password ', this.loginCreds.password)
       this.$http.post('http://localhost:3000/auth/login', {
         email: this.loginCreds.email,
         password: this.loginCreds.password
-      }).then(function (data) {
-        console.log(data)
+      }).then((data) => {
+        this.userId = data.body.host.id
+        this.$router.push({name: 'profile', params: {id: this.userId}})
       })
     }
   }
