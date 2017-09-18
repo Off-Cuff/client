@@ -12,11 +12,9 @@
             <div class="navbar-end">
               <!-- navbar items -->
                 <h1 class="navbar-item menu is-size-5 has-text-weight-semibold">
-                  <router-link to="/about"><\About\></router-link>
-
-                  </a> -- <a href="#"> <\Premium\>
-                  </a> --
-                  <a href="#"><\Log-in\></a>
+                  <router-link to="/about"><\About\></router-link><p>--</p>
+                  <router-link to="/login"><\Log-in\></router-link><p>--</p>
+                  <a href="#"><\Premium\></a>
                 </h1>
             </div>
           </div>
@@ -66,5 +64,8 @@ export default {
   }
   a{
     padding: 0, 2%;
+  }
+  img{
+    padding-bottom: -5%;
   }
 </style>

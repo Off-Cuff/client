@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import QuickStart from '@/components/body/slideshow-components/quick-start-home/quick-start-home.vue'
 import AboutPage from '@/components/body/main/about/About.vue'
 import Home from '@/components/body/Main/home/Landing.vue'
+import Signup from '@/components/body/Main/signup/signup.vue'
+import Login from '@/components/body/Main/login/login.vue'
 import Slides from '@/components/body/slideshow-components/slideshow/slideshow-slides.vue'
 import Timer from '@/components/body/slideshow-components/quick-start-home/quick-start-timer.vue'
 
@@ -34,6 +36,16 @@ export default new Router({
       path: '/Slides',
       name: 'Slides',
       component: Slides
+    },
+    {
+      path: '/Login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/Signup',
+      name: 'Signup',
+      component: Signup
     }
   ]
 })

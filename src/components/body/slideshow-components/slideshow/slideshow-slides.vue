@@ -3,11 +3,11 @@
 
       <button class="button is-primary topBtmPad is-large" id="show-modal" @click="showModal = true">Try again!</button>
         <div class="landing-buttons">
-        <router-link to="/" class="button is-primary is-large">
+        <!-- <router-link to="/" class="btm-pad button is-primary is-large">
 
             Home
 
-        </router-link>
+        </router-link> -->
       </div>
       <!-- use the modal component, pass in the prop -->
       <modal v-if="showModal" @close="showModal = false">
@@ -34,6 +34,9 @@ export default {
 <style lang="scss" src="bulma"></style>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.btm-pad{
+  margin-bottom: 5%;
+}
 .landing-buttons{
   margin-top: 1%;
   margin-bottom: 10%;

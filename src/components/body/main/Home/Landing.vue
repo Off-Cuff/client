@@ -98,7 +98,7 @@ img{
   z-index:3;
   padding-top: -10px;
   margin-top: -22%;
-  margin-bottom: 5%;
+  /*margin-bottom: 5%;*/
 }
 .image {
    /*position: relative;*/

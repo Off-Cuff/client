@@ -5,8 +5,9 @@ import App from './App'
 import router from './router'
 import VueRouter from 'vue-router'
 //  import Routes from './routes'
-// import VueResource from 'vue-resource'
+import VueResource from 'vue-resource'
 Vue.use(VueRouter)
+Vue.use(VueResource)
 Vue.config.productionTip = false
 Vue.filter('two_digits', function (value) {
   if (value.toString().length <= 1) {

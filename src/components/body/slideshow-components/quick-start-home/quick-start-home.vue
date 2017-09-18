@@ -1,6 +1,6 @@
 <template>
   <div class="container content">
-    <div class="card">
+    <div class="pad card">
     <div class="card-content">
       <div class="title">
         <span>Quick Start</span>
@@ -53,6 +53,10 @@ p{
 }
 .qsButton{
   margin-top: 10%;
+}
+.pad{
+  margin-bottom: 6%;
+  margin-top: 4%;
 }
 
 </style>
