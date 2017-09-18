@@ -12,37 +12,40 @@
         <div class="column"></div>
       </div>
     </div>
-
-    <div class="field login-btn">
-      <p class="control has-icons-left has-icons-right">
-        <input class="input is-large" type="email" placeholder="Name">
-      </p>
-    </div>
-    <div class="field login-btn">
-      <p class="control has-icons-left has-icons-right">
-        <input class="input is-large" type="email" placeholder="Email">
-      </p>
-    </div>
-    <div class="field login-btn">
-      <p class="control has-icons-left">
-        <input class="input is-large" type="password" placeholder="Password">
-      </p>
-    </div>
-    <div class="columns">
-      <div class="column is-one-third"></div>
-      <div class="column">
-        <p class="control has-text-centered">
-          <button class="button is-primary is-large login-btn">
-            Signup
-          </button>
-          <br>
-          <div class="signup-lnk">
-            <router-link to="/">back home</router-link>
-          </div>
+    <form >
+      <div class="field login-btn">
+        <p class="control has-icons-left has-icons-right">
+          <input v-model="signupCreds.name" class="input is-large" type="text" placeholder="Name">
         </p>
       </div>
-      <div class="column"></div>
-    </div>
+      <div class="field login-btn">
+        <p class="control has-icons-left has-icons-right">
+          <input v-model="signupCreds.email" class="input is-large" type="email" placeholder="Email">
+        </p>
+      </div>
+      <div class="field login-btn">
+        <p class="control has-icons-left">
+          <input v-model="signupCreds.password" class="input is-large" type="password" placeholder="Password">
+        </p>
+      </div>
+      <div class="columns">
+        <div class="column is-one-third"></div>
+        <div class="column">
+          <p class="control has-text-centered">
+            <button @click.prevent="signup" class="button is-primary is-large login-btn">
+              Signup
+            </button>
+            <br>
+            <div class="signup-lnk">
+              <router-link to="/">back home</router-link>
+            </div>
+          </p>
+        </div>
+        <div class="column"></div>
+      </div>
+    </form>
+
+
   </div>
 
 </template>
@@ -51,7 +54,25 @@
 export default {
   data () {
     return {
+      signupCreds: {
+        name: '',
+        email: '',
+        password: ''
+      }
 
+    }
+  },
+  methods: {
+    signup: function () {
+      console.log('in')
+      console.log('password ', this.signupCreds.password)
+      this.$http.post('http://localhost:3000/auth/signup', {
+        name: this.signupCreds.name,
+        email: this.signupCreds.email,
+        password: this.signupCreds.password
+      }, {headers: {'Content-Type': 'application/json'}}).then(function (data) {
+        console.log(data)
+      })
     }
   }
 }

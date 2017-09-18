@@ -31,12 +31,6 @@ export default {
   text-align: center;
   margin-top: 3%;
 }
-.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-}
+
 
 </style>

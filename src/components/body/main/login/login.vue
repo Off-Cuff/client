@@ -16,19 +16,19 @@
 
     <div class="field login-btn">
       <p class="control has-icons-left has-icons-right">
-        <input class="input is-large" type="email" placeholder="Email">
+        <input v-model="loginCreds.email" class="input is-large" type="email" placeholder="Email">
       </p>
     </div>
     <div class="field login-btn">
       <p class="control has-icons-left">
-        <input class="input is-large" type="password" placeholder="Password">
+        <input v-model="loginCreds.password" class="input is-large" type="password" placeholder="Password">
       </p>
     </div>
     <div class="columns">
       <div class="column is-one-third"></div>
       <div class="column">
         <p class="control has-text-centered">
-          <button class="button is-primary is-large login-btn">
+          <button @click.prevent="login" class="button is-primary is-large login-btn">
             Login
           </button>
           <br>
@@ -47,7 +47,22 @@
 export default {
   data () {
     return {
-
+      loginCreds: {
+        email: '',
+        password: ''
+      }
+    }
+  },
+  methods: {
+    login: function () {
+      console.log('in')
+      console.log('password ', this.loginCreds.password)
+      this.$http.post('http://localhost:3000/auth/login', {
+        email: this.loginCreds.email,
+        password: this.loginCreds.password
+      }).then(function (data) {
+        console.log(data)
+      })
     }
   }
 }
