@@ -8,6 +8,7 @@ import Login from '@/components/body/Main/login/login.vue'
 import Slides from '@/components/body/slideshow-components/slideshow/slideshow-slides.vue'
 import Timer from '@/components/body/slideshow-components/quick-start-home/quick-start-timer.vue'
 import Profile from '@/components/body/main/user/profile.vue'
+import Session from '@/components/body/main/user/class/session-profile.vue'
 
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ export default new Router({
       path: '/host/:id/profile',
       name: 'profile',
       component: Profile
+    },
+    {
+      path: '/host/:id/class/:id/session/:id',
+      name: 'Session',
+      component: Session
     }
   ]
 })
