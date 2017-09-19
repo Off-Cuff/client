@@ -7,7 +7,7 @@
 
         <div class="column">
           <p class="has-text-centersied title-padding">
-            <h1 class="title is-2">Profile</h1>
+            <h1 class="title is-2">Class - class.title</h1>
           </p>
           <div class="signup-lnk">
             <button @click="newClass = !newClass" class="button is-primary is-smedium login-btn" to="/profile">New Class Form</button>
@@ -26,7 +26,7 @@
           <p class="has-text-centersied title-padding">
             <h1 class="title is-2"><u>Class List</u></h1>
             <ul>
-              <li  v-for="c in classes"><a class="is-2" href="#">{{ c.title }}</a></li>
+              <li v-for="c in classes"><a class="is-2" href="#">{{ c.title }}</a></li>
             </ul>
           </p>
         </div>
@@ -62,7 +62,6 @@ export default {
         host_id: this.$route.params.id,
         retro_id: 3
       }).then((response) => {
-        this.getClasses()
         console.log(response)
       })
     },
