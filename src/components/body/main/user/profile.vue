@@ -81,8 +81,8 @@ export default {
       hostId: this.$route.params.id,
       classId: '',
       titled: '',
-      getURL: 'http://localhost:3000/api/v1/host/' + this.$route.params.id + '/classes',
-      postURL: 'http://localhost:3000/api/v1/host/create-class',
+      getURL: 'https://off-cuff.herokuapp.com/api/v1/host/' + this.$route.params.id + '/classes',
+      postURL: 'https://off-cuff.herokuapp.com/api/v1/host/create-class',
       deleteURL: '',
       classes: [],
       classesCreated: ''
