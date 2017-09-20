@@ -2,13 +2,14 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import QuickStart from '@/components/body/slideshow-components/quick-start-home/quick-start-home.vue'
 import AboutPage from '@/components/body/main/about/About.vue'
-import Home from '@/components/body/Main/home/Landing.vue'
+import PremiumPage from '@/components/body/main/premium/premium.vue'
+import Home from '@/components/body/main/home/Landing.vue'
 import Signup from '@/components/body/Main/signup/signup.vue'
 import Login from '@/components/body/Main/login/login.vue'
 import Slides from '@/components/body/slideshow-components/slideshow/slideshow-slides.vue'
 import Timer from '@/components/body/slideshow-components/quick-start-home/quick-start-timer.vue'
-import Profile from '@/components/body/main/user/profile.vue'
-import Session from '@/components/body/main/user/class/session-profile.vue'
+import Classes from '@/components/body/main/user/profile.vue'
+import Session from '@/components/body/main/user/class/class-profile.vue'
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
       path: '/About',
       name: 'About',
       component: AboutPage
+    },
+    {
+      path: '/Premium',
+      name: 'Premium',
+      component: PremiumPage
     },
     {
       path: '/QuickStart',
@@ -50,14 +56,19 @@ export default new Router({
       component: Signup
     },
     {
-      path: '/host/:id/profile',
-      name: 'profile',
-      component: Profile
+      path: '/host/:id/Classes',
+      name: 'Classes',
+      component: Classes
     },
     {
-      path: '/host/:id/class/:id/session/:id',
-      name: 'Session',
+      path: '/host/:host_id/Class/:class_id/Sessions',
+      name: 'Sessions',
       component: Session
     }
+    // {
+    //   path: '/host/:class_id/session/',
+    //   name: 'Session',
+    //   component: Session
+    // }
   ]
 })

@@ -10,31 +10,35 @@
 <script>
 export default{
   mounted () {
-    // console.log(this.$router)
     this.timer()
   },
   props: {
   },
   data () {
     return {
-      timeLeft: '-'
+      timeLeft: '-',
+      timerId: 0
     }
   },
   methods: {
     timer () {
       this.timeLeft = 3
-      var timerId = setInterval(() => {
+      this.timerId = setInterval(() => {
         if (this.timeLeft !== 0) {
           this.timeLeft--
         } else {
-          clearInterval(timerId)
+          clearInterval(this.timerId)
+          console.log('redirect?')
           this.$router.push({ name: 'Slides' })
-          this.timer()
         }
       }, 1000)
     }
   },
   computed: {
+  },
+  unmounted () {
+    console.log('destroy')
+    clearInterval(this.timerId)
   }
 }
 
@@ -44,7 +48,6 @@ export default{
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400|Roboto:100);
-
 .block {
   display: flex;
   flex-direction: column;

@@ -35,8 +35,11 @@
           <div class="signup-lnk">
             <button @click.prevent="login" class="button is-primary is-large login-btn">
               Login
-              <router-link :to="{name: 'profile', params: {id: userId}}"></router-link>
+              <router-link :to="{name: 'Classes', params: {id: userId}}"></router-link>
             </button>
+            <div class="signup-lnk">
+              <router-link to="signup">hey, need to signup?</router-link>
+            </div>
           </div>
         </p>
       </div>
@@ -54,7 +57,7 @@ export default {
         email: '',
         password: ''
       },
-      userId: ''
+      userId: '1'
     }
   },
   methods: {
@@ -64,7 +67,7 @@ export default {
         password: this.loginCreds.password
       }).then((data) => {
         this.userId = data.body.host.id
-        this.$router.push({name: 'profile', params: {id: this.userId}})
+        this.$router.push({name: 'Classes', params: {id: this.userId}})
       })
     }
   }

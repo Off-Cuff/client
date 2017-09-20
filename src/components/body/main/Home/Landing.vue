@@ -17,68 +17,39 @@
             </router-link>
             <!-- <router-link to="/about"><\About\></router-link> -->
             <span class="space"></span>
-            <button type="button" name="button is-primary" class="button is-primary is-large">
-              Premium
-            </button>
-            <!-- <div class="">
-              <ul>
-                <li v-for="src in srcs">{{ src }}</li>
-              </ul>
-            </div> -->
+            <router-link to="/Premium" class="button is-primary is-large">
+
+                Premium
+
+            </router-link>
+            <modal v-if="showModal" @close="showModal = false">
+              <img src="https://unsplash.it/1300/625/?random" alt="a random - flowers and bees?">
+
+              <img src="https://unsplash.it/1350/640/?random" alt="a random - a dog and his bone">
+
+              <img src="https://unsplash.it/1200/620/?random" alt="a random - a curious pilot">
+            </modal>
           </div>
       </div>
 
-        <img class="landingBackground" src="../../../../assets/presentation-pic.jpg" alt="thinking">
-
-        <!-- <modal v-show="showModal">
-
-
-        </modal> -->
-
+        <img class="landingBackground" src="../../../../assets/presentation-pic.jpg" alt="">
 
     </div>
   </template>
 
 <script>
-// export function {
-//   console.log('passed?');
-// }
 import modal from '../../slideshow-components/slideshow/modal.vue'
 export default {
   data () {
     return {
-      showModal: false,
-      showImages: false,
-      p1: '',
-      p2: '',
-      p3: '',
-      srcs: []
+      showModal: false
     }
   },
   methods: {
-  //   imgPath: function () {
-  //     for (let index = 3; index !== 0; index--) {
-  //       let x = 1100
-  //       let y = 1300
-  //       let j = Math.floor(Math.random() * ((y - x) + 1) + x)
-  //       let i = Math.round(j / 9)
-  //       if (index === 3) {
-  //         this.p1 = 'https://unsplash.it/' + j + '/' + i + '/?random'
-  //         console.log(this.p1)
-  //       } else if (index === 2) {
-  //         this.p2 = 'https://unsplash.it/' + j + '/' + i + '/?random'
-  //         // console.log(this.p2)
-  //       } else {
-  //         this.p3 = 'https://unsplash.it/' + j + '/' + i + '/?random'
-  //         // console.log(this.p3)
-  //       }
-  //     }
-  //     this.srcs.push(this.p1)
-  //     this.srcs.push(this.p2)
-  //     this.srcs.push(this.p3)
-  //   }
+
   },
   mounted () {
+    clearInterval(this.timerInterval)
   },
   components: {
     'modal': modal
@@ -88,9 +59,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  /*.landingBackground{
-    position:fixed;
-  }*/
   html{
     padding-top:-5%;
   }

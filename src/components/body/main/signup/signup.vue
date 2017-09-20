@@ -34,6 +34,7 @@
           <p class="control has-text-centered">
             <button @click.prevent="signup" class="button is-primary is-large login-btn">
               Signup
+              <router-link :to="{name: 'profile', params: {id: userId}}"></router-link>
             </button>
             <br>
             <div class="signup-lnk">

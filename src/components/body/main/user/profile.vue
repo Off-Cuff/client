@@ -7,10 +7,10 @@
 
         <div class="column">
           <p class="has-text-centersied title-padding">
-            <h1 class="title is-2">Profile</h1>
+            <h1 class="title is-2 head">Profile</h1>
           </p>
           <div class="signup-lnk">
-            <button @click="newClass = !newClass" class="button is-primary is-smedium login-btn" to="/profile">New Class Form</button>
+            <button @click="newClass = !newClass" class="button is-primary is-smedium login-btn">New Class Form</button>
           </div>
 
           <form class="">
@@ -19,18 +19,22 @@
             </div>
 
             <div class="" v-show="newClass">
-              <button @click.prevent="formHandler" class="button is-primary is-smedium login-btn" to="/profile">Add Class</button>
+              <button @click.prevent="formHandler" class="button is-primary is-smedium login-btn" to="/Classes">Add Class</button>
             </div>
           </form>
 
           <p class="has-text-centersied title-padding">
             <h1 class="title is-2"><u>Class List</u></h1>
             <ul>
-              <li  @click="sessionRoute" v-for="c in classes"><a class="is-2" href="#">{{ c.title }}</a></li>
+              <li  class="title is-medium list" @click="addClassId(c.id)" v-for="c in classes">
+                <a class="is-2">
+                <!-- <router-link :to="{name: 'Sessions', params: {host_id: hostId, class_id: c.id}}"></router-link> -->
+                {{ c.title }}
+                </a>
+            </li>
             </ul>
           </p>
         </div>
-
         <div class="column"></div>
       </div>
     </div>
@@ -43,6 +47,8 @@ export default {
   data () {
     return {
       newClass: false,
+      hostId: this.$route.params.id,
+      classId: '',
       titled: '',
       getURL: 'http://localhost:3000/api/v1/host/' + this.$route.params.id + '/classes',
       postURL: 'http://localhost:3000/api/v1/host/create-class',
@@ -51,7 +57,7 @@ export default {
     }
   },
   mounted () {
-    console.log(this.$route.params.id)
+    console.log('param: ', this.$route.params.id)
     this.getClasses()
   },
   methods: {
@@ -70,18 +76,22 @@ export default {
       console.log('in?')
       console.log(this.getURL)
       this.$http.get(this.getURL).then((data) => {
-        console.log('double in?')
         this.classes = data.body
         console.log('classes array??', this.classes)
       })
     },
-    sessionRoute: function () {
-      this.$router.push({name: 'Session'})
-    },
     formHandler: function () {
       this.post()
-      // this.getClasses()
       this.newClass = !this.newClass
+    },
+    sessionRoute: function () {
+      console.log('host: ', this.hostId, ' ', 'class: ', this.classId)
+      this.$router.push({name: 'Sessions', params: {host_id: this.hostId, class_id: this.classId}})
+    },
+    addClassId: function (id) {
+      this.classId = id
+      this.sessionRoute()
+      console.log('addClassId: ', this.classId)
     }
   }
 }
@@ -90,6 +100,12 @@ export default {
 <style lang="scss" src="bulma"></style>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.head{
+  margin-top: 10vh;
+}
+.list{
+  margin-bottom: 10%;
+}
 .title-padding{
   margin-top: 5%;
 }

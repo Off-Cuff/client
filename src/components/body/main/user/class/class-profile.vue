@@ -2,36 +2,33 @@
   <div class="container">
 
     <div class="container">
-      <div class="columns">
+      <div class="columns head">
         <div class="column is-one-third"></div>
 
         <div class="column">
           <p class="has-text-centersied title-padding">
-            <h1 class="title is-2">Class - class.title</h1>
-          </p>
-          <div class="signup-lnk">
-            <button @click="newClass = !newClass" class="button is-primary is-smedium login-btn" to="/profile">New Class Form</button>
-          </div>
-
-          <form class="">
-            <div class="">
-                <input v-show="newClass" v-model="titled" class="input is-large" type="text" placeholder="Class Name">
-            </div>
-
-            <div class="" v-show="newClass">
-              <button @click.prevent="formHandler" class="button is-primary is-smedium login-btn" to="/profile">Add Class</button>
-            </div>
-          </form>
-
-          <p class="has-text-centersied title-padding">
-            <h1 class="title is-2"><u>Class List</u></h1>
+            <h1 class="title is-2"><u>Sesion List</u></h1>
             <ul>
-              <li v-for="c in classes"><a class="is-2" href="#">{{ c.title }}</a></li>
+              <li class="title is-medium list" v-for="s in sessions"><router-link to="/Timer">{{ s.title }}</router-link></li>
             </ul>
           </p>
         </div>
 
-        <div class="column"></div>
+        <div class="column">
+          <div class="signup-lnk">
+            <button @click="newSession = !newSession" class="button is-primary is-smedium login-btn" to="/profile">New Session</button>
+          </div>
+
+          <form v-show="newSession">
+            <div class="">
+                <input  v-model="titled" class="input is-large" type="text" placeholder="Session Name">
+            </div>
+
+            <div class="">
+              <button @click.prevent="formHandler" class="button is-primary is-smedium login-btn" >Add Session</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -42,43 +39,48 @@
 export default {
   data () {
     return {
-      newClass: false,
+      newSession: false,
       titled: '',
-      getURL: 'http://localhost:3000/api/v1/host/' + this.$route.params.id + '/classes',
-      postURL: 'http://localhost:3000/api/v1/host/create-class',
-      classes: [],
+      getURL: 'http://localhost:3000/api/v1/host/class/sessions/' + this.$route.params.class_id,
+      postURL: 'http://localhost:3000/api/v1/host/create-session',
+      sessions: [],
       classesCreated: ''
     }
   },
   mounted () {
-    console.log(this.$route.params.id)
-    this.getClasses()
+    console.log('host: ', this.$route.params.host_id, ' ', 'class: ', this.$route.params.class_id)
+    this.getSessions()
   },
   methods: {
     post: function () {
-      console.log(this.titled)
+      console.log('post')
       this.$http.post(this.postURL, {
         title: this.titled,
-        host_id: this.$route.params.id,
-        retro_id: 3
+        pic_quantity: '3',
+        pic_duration: '30',
+        class_id: this.$route.params.host_id
       }).then((response) => {
         console.log(response)
-      })
-    },
-    getClasses: function () {
-      console.log('in?')
-      console.log(this.getURL)
-      this.$http.get(this.getURL).then((data) => {
-        console.log('double in?')
-        this.classes = data.body
-        console.log('classes array??', this.classes)
+        this.getSessions()
       })
     },
     formHandler: function () {
       this.post()
-      // this.getClasses()
-      this.newClass = !this.newClass
+      this.getSessions()
+      this.newSession = !this.newSession
+    },
+    getSessions: function () {
+      console.log('in?')
+      console.log(this.getURL)
+      this.$http.get(this.getURL).then((data) => {
+        this.sessions = data.body
+        console.log(this.sessions)
+      })
     }
+  },
+  formHandler: function () {
+    this.post()
+    this.newClass = !this.newClass
   }
 }
 </script>
@@ -86,6 +88,12 @@ export default {
 <style lang="scss" src="bulma"></style>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.head{
+  margin-top: 10vh;
+}
+.list{
+  margin-bottom: 10%;
+}
 .title-padding{
   margin-top: 5%;
 }

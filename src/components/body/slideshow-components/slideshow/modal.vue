@@ -18,6 +18,12 @@
 
                 <img v-show="object.visibility3" :src="this.p3" alt="a random - a curious pilot">
 
+                <!-- <img v-show="object.visibility1" src="https://unsplash.it/1300/625/?random" alt="a random - flowers and bees?">
+
+                <img v-show="object.visibility2" src="https://unsplash.it/1350/640/?random" alt="a random - a dog and his bone">
+
+                <img v-show="object.visibility3" src="https://unsplash.it/1200/620/?random" alt="a random - a curious pilot"> -->
+
             </div>
             <!-- <div class="">
               <ul>
@@ -67,15 +73,6 @@ export default {
     this.stopTimer()
   },
   methods: {
-    // loaded: function () {
-    //   console.log('in loaded')
-    //   document.onreadystatechange = function () {
-    //     if (document.readyState === 'complete') {
-    //       this.timer()
-    //       console.log('YES!')
-    //     }
-    //   }
-    // },
     imgPath: function () {
       let x = 1100
       let y = 1200
@@ -84,21 +81,21 @@ export default {
       return 'https://unsplash.it/' + i + '/' + j + '/?random'
     },
     timer () {
-      this.timeLeft = 90
+      this.timeLeft = 45
       console.log('90')
       this.timerInterval = setInterval(() => {
         console.log('hit 1')
-        if (this.timeLeft <= 90 && this.timeLeft > 60) {
+        if (this.timeLeft <= 45 && this.timeLeft > 30) {
           this.timeLeft--
-        } else if (this.timeLeft <= 60 && this.timeLeft > 30) {
-          if (this.timeLeft === 60) {
+        } else if (this.timeLeft <= 30 && this.timeLeft > 15) {
+          if (this.timeLeft === 30) {
             this.object.visibility1 = !this.object.visibility1
             this.object.visibility2 = !this.object.visibility2
             console.log('hit 2')
           }
           this.timeLeft--
-        } else if (this.timeLeft <= 30 && this.timeLeft !== 0) {
-          if (this.timeLeft === 30) {
+        } else if (this.timeLeft <= 15 && this.timeLeft !== 0) {
+          if (this.timeLeft === 15) {
             this.object.visibility2 = !this.object.visibility2
             this.object.visibility3 = !this.object.visibility3
             console.log('hit 3')

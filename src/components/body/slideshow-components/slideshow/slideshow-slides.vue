@@ -21,8 +21,11 @@ import modal from './modal.vue'
 export default {
   data () {
     return {
-      showModal: true
+      showModal: false
     }
+  },
+  mounted () {
+    this.showModal = true
   },
   components: {
     'modal': modal

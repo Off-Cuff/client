@@ -5,9 +5,9 @@
           <div class="navbar-menu nav">
             <div class="navbar-start">
               <!-- navbar items -->
-              <a class="navbar-item" href="#">
-                <h1 class="title is-1 navbar-brand">{{ title }}</h1>
-              </a>
+                <router-link to="/">
+                    <h1 class="title is-1 navbar-brand">{{ title }}</h1>
+                </router-link>
             </div>
             <div class="navbar-end">
               <!-- navbar items -->

@@ -37,6 +37,9 @@ export default {
     return {
       showImages: false
     }
+  },
+  mounted () {
+    clearInterval(this.timerInterval)
   }
 }
 </script>
