@@ -82,8 +82,8 @@ export default {
     return {
       newSession: false,
       titled: '',
-      getURL: 'http://localhost:3000/api/v1/host/class/sessions/' + this.$route.params.class_id,
-      postURL: 'http://localhost:3000/api/v1/host/create-session',
+      getURL: 'https://off-cuff.herokuapp.com/api/v1/host/class/sessions/' + this.$route.params.class_id,
+      postURL: 'https://off-cuff.herokuapp.com/api/v1/host/create-session',
       sessions: [],
       classesCreated: ''
     }

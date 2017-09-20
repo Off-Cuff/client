@@ -67,7 +67,7 @@ export default {
     signup: function () {
       console.log('in')
       console.log('password ', this.signupCreds.password)
-      this.$http.post('http://localhost:3000/auth/signup', {
+      this.$http.post('https://off-cuff.herokuapp.com/auth/signup', {
         name: this.signupCreds.name,
         email: this.signupCreds.email,
         password: this.signupCreds.password

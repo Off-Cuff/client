@@ -4,7 +4,7 @@
     <div class="container">
       <div class="columns">
         <div class="column is-one-third">
-          <a @click="go">back?</a>
+          <a @click="go">back</a>
         </div>
 
         <div class="column">
@@ -65,7 +65,7 @@
               </nav>
           </p>
         </div>
-        <div class="column"></div>
+        <!-- <div class="column"><a @click="this.deleteClass()">delete class</a></div> -->
       </div>
     </div>
   </div>
@@ -83,6 +83,7 @@ export default {
       titled: '',
       getURL: 'http://localhost:3000/api/v1/host/' + this.$route.params.id + '/classes',
       postURL: 'http://localhost:3000/api/v1/host/create-class',
+      deleteURL: '',
       classes: [],
       classesCreated: ''
     }
@@ -128,6 +129,9 @@ export default {
       this.classId = id
       this.sessionRoute()
       console.log('addClassId: ', this.classId)
+    },
+    deleteClass: function (id) {
+      this.$router.delete()
     }
   }
 }

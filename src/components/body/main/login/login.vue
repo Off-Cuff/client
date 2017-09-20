@@ -33,7 +33,7 @@
 
           <br>
           <div class="signup-lnk">
-            <button @click.prevent="login" class="button is-primary is-large login-btn">
+            <button @click.prevent="login" class="button is-primary is-large ">
               Login
               <router-link :to="{name: 'Classes', params: {id: this.userId}}"></router-link>
             </button>
@@ -62,7 +62,7 @@ export default {
   },
   methods: {
     login: function () {
-      this.$http.post('http://localhost:3000/auth/login', {
+      this.$http.post('https://off-cuff.herokuapp.com/auth/login', {
         email: this.loginCreds.email,
         password: this.loginCreds.password
       }).then((data) => {
@@ -95,9 +95,9 @@ export default {
 .title-padding{
   margin-top: 7%;
 }
-.login-btn{
+/*.login-btn{
   margin: 5%;
-}
+}*/
 .signup-lnk{
   margin: 5%;
   padding-bottom: 15%;
