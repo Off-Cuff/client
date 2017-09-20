@@ -1,5 +1,6 @@
 <template>
   <div class="">
+    <a @click="go">back?</a>
     <div class="block">
         <p class="digit">{{ timeLeft }}</p>
         <p class="text">Seconds</p>
@@ -21,6 +22,10 @@ export default{
     }
   },
   methods: {
+    go () {
+      clearInterval(this.timerId)
+      this.$router.go(-1)
+    },
     timer () {
       this.timeLeft = 3
       this.timerId = setInterval(() => {
@@ -36,12 +41,15 @@ export default{
   },
   computed: {
   },
+  destroy () {
+    console.log('destroy')
+    clearInterval(this.timerId)
+  },
   unmounted () {
     console.log('destroy')
     clearInterval(this.timerId)
   }
 }
-
 </script>
 
 <style lang="scss" src="bulma"></style>
@@ -58,13 +66,14 @@ export default{
   font-size: 40px;
   font-family: 'Roboto Condensed', serif;
   font-weight: 40;
-  margin-top:10px;
-  margin-bottom: 10px;
+  /*margin-top: ;*/
+  margin-bottom: 6%;
+  padding-bottom: 5%;
   text-align: center;
 }
 .digit {
-  padding-top: 1%;
-  /*padding-bottom: 2%;*/
+  padding-top: 5%;
+  /*padding-bottom: 5%;*/
   color: #ecf0f1;
   font-size: 150px;
   font-weight: 100;

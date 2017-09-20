@@ -12,17 +12,17 @@
 
             <div  class="modal-body slide-pictures">
 
-                <img v-show="object.visibility1" :src="this.p1" alt="a random - flowers and bees?">
+                <!-- <img v-show="object.visibility1" :src="this.p1" alt="a random - flowers and bees?">
 
                 <img v-show="object.visibility2" :src="this.p2" alt="a random - a dog and his bone">
 
-                <img v-show="object.visibility3" :src="this.p3" alt="a random - a curious pilot">
+                <img v-show="object.visibility3" :src="this.p3" alt="a random - a curious pilot"> -->
 
-                <!-- <img v-show="object.visibility1" src="https://unsplash.it/1300/625/?random" alt="a random - flowers and bees?">
+                <img class="image" v-show="object.visibility1" src="https://unsplash.it/1300/625/?random" alt="a random - flowers and bees?">
 
-                <img v-show="object.visibility2" src="https://unsplash.it/1350/640/?random" alt="a random - a dog and his bone">
+                <img class="image" v-show="object.visibility2" src="https://unsplash.it/1350/640/?random" alt="a random - a dog and his bone">
 
-                <img v-show="object.visibility3" src="https://unsplash.it/1200/620/?random" alt="a random - a curious pilot"> -->
+                <img class="image" v-show="object.visibility3" src="https://unsplash.it/1200/620/?random" alt="a random - a curious pilot">
 
             </div>
             <!-- <div class="">
@@ -31,7 +31,9 @@
               </ul>
             </div> -->
             <div class="modal-footer">
-                {{ timeLeft }}
+              <div class="block">
+                  <p class="digit">{{ timeLeft }}</p>
+              </div>
             </div>
 
           </div>
@@ -118,6 +120,31 @@ export default {
 <style lang="scss" src="bulma"></style>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.image{
+  position: relative;
+  width: 100%; /* for IE 6 */
+}
+.block {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+.digit {
+  position: absolute;
+  top: 200px;
+  left: 0;
+  width: 100%;
+  padding-top: 1%;
+  padding-right: 5%;
+  margin-bottom: 15%;
+  /*padding-bottom: 2%;*/
+  color: #ecf0f1;
+  font-size: 100px;
+  font-weight: 100;
+  font-family: 'Roboto', serif;
+  margin: 10px;
+  text-align: right;
+}
 .modal-mask {
 position: fixed;
 z-index: 9998;

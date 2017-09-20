@@ -3,13 +3,15 @@
 
     <div class="container">
       <div class="columns">
-        <div class="column is-one-third"></div>
+        <div class="column is-one-third">
+          <a @click="go">back?</a>
+        </div>
 
         <div class="column">
           <p class="has-text-centersied title-padding">
-            <h1 class="title is-2 head">Profile</h1>
+
           </p>
-          <div class="signup-lnk">
+          <!-- <div class="signup-lnk">
             <button @click="newClass = !newClass" class="button is-primary is-smedium login-btn">New Class Form</button>
           </div>
 
@@ -21,18 +23,46 @@
             <div class="" v-show="newClass">
               <button @click.prevent="formHandler" class="button is-primary is-smedium login-btn" to="/Classes">Add Class</button>
             </div>
-          </form>
+          </form> -->
 
           <p class="has-text-centersied title-padding">
-            <h1 class="title is-2"><u>Class List</u></h1>
-            <ul>
-              <li  class="title is-medium list" @click="addClassId(c.id)" v-for="c in classes">
-                <a class="is-2">
-                <!-- <router-link :to="{name: 'Sessions', params: {host_id: hostId, class_id: c.id}}"></router-link> -->
-                {{ c.title }}
-                </a>
-            </li>
-            </ul>
+            <h1 class="title is-2"><u>{{this.profileName}}'s Class List</u></h1>
+              <nav class="panel">
+                <div class="panel-block">
+                  <button @click="newClass = !newClass"
+                          v-show="!newClass"
+                          class="button is-primary is-fullwidth">
+                    New Class
+                  </button>
+
+                  <button v-show="newClass"
+                          @click.prevent="formHandler"
+                          class="button is-primary login-btn is-fullwidth"
+                          to="/Classes">
+                          Add Class
+                  </button>
+                  <button v-show="newClass" class="modal-default-button button is-danger" id="show-modal" @click="newClass = !newClass">X</button>
+                </div>
+                <div class="panel-block">
+                  <form class="">
+                    <div class="">
+                        <input v-show="newClass" v-model="titled" class="input is-fullwidth is-small" type="text" placeholder="Class Name">
+                    </div>
+
+                    <div class="" v-show="newClass">
+                      <!-- <button @click.prevent="formHandler" class="button is-primary is-medium login-btn" to="/Classes">Add Class</button> -->
+                    </div>
+                  </form>
+                </div>
+                <span  class="title is-medium list" @click="addClassId(c.id)" v-for="c in classes">
+                    <a class="panel-block is-active">
+                      <div class=" is-fullwidth is-pulled-left">
+                        {{ c.title }}
+                      </div>
+                    </a>
+
+              </span>
+              </nav>
           </p>
         </div>
         <div class="column"></div>
@@ -46,6 +76,7 @@
 export default {
   data () {
     return {
+      profileName: localStorage.name,
       newClass: false,
       hostId: this.$route.params.id,
       classId: '',
@@ -57,10 +88,15 @@ export default {
     }
   },
   mounted () {
+    console.log('name: ', this.profileName)
     console.log('param: ', this.$route.params.id)
     this.getClasses()
   },
   methods: {
+    go () {
+      clearInterval(this.timerId)
+      this.$router.go(-1)
+    },
     post: function () {
       console.log(this.titled)
       this.$http.post(this.postURL, {
@@ -102,9 +138,6 @@ export default {
 <style scoped>
 .head{
   margin-top: 10vh;
-}
-.list{
-  margin-bottom: 10%;
 }
 .title-padding{
   margin-top: 5%;

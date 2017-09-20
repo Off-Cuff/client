@@ -1,7 +1,10 @@
 <template>
     <div>
-
-      <button class="button is-primary topBtmPad is-large" id="show-modal" @click="showModal = true">Try again!</button>
+      <br>
+      <br>
+      <h1 class="title is-1 tit">CONGRATS</h1>
+      <h2 class="title is-1">You made it!</h2>
+      <button class="button is-primary btn-pad is-large" id="show-modal" @click="showModal = true">Want another?</button>
         <div class="landing-buttons">
         <!-- <router-link to="/" class="btm-pad button is-primary is-large">
 
@@ -37,7 +40,11 @@ export default {
 <style lang="scss" src="bulma"></style>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.btm-pad{
+.tit{
+  margin-top: 5%;
+  /*margin-bottom: 3%;*/
+}
+.btn-pad{
   margin-bottom: 5%;
 }
 .landing-buttons{
@@ -45,7 +52,7 @@ export default {
   margin-bottom: 10%;
 }
 .topBtmPad{
-  margin-top: 15%;
+  margin-top: 3%;
 }
 .modal-mask {
 position: fixed;

@@ -35,7 +35,7 @@
           <div class="signup-lnk">
             <button @click.prevent="login" class="button is-primary is-large login-btn">
               Login
-              <router-link :to="{name: 'Classes', params: {id: userId}}"></router-link>
+              <router-link :to="{name: 'Classes', params: {id: this.userId}}"></router-link>
             </button>
             <div class="signup-lnk">
               <router-link to="signup">hey, need to signup?</router-link>
@@ -67,7 +67,22 @@ export default {
         password: this.loginCreds.password
       }).then((data) => {
         this.userId = data.body.host.id
-        this.$router.push({name: 'Classes', params: {id: this.userId}})
+        console.log('this.userId ', this.userId)
+        console.log(data)
+        this.userId = data.body.host.id
+        console.log(this.userId)
+        localStorage.token = data.body.token
+        console.log('token', localStorage.token)
+        localStorage.id = data.body.host.id
+        console.log('id', localStorage.id)
+        localStorage.name = data.body.host.name
+        console.log('name', localStorage.name)
+        localStorage.email = data.body.host.email
+        console.log('email', localStorage.email)
+        alert('Login Successful!')
+        // console.log('long', localStorage.token, ' ', localStorage.id, ' ', localStorage.name, ' ', localStorage.email)
+        this.userId = data.body.host.id
+        this.$router.push({name: 'Classes', params: {id: data.body.host.id}})
       })
     }
   }
