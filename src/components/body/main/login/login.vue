@@ -82,6 +82,7 @@ export default {
         console.log('long', localStorage.token, ' ', localStorage.id, ' ', localStorage.name, ' ', localStorage.email)
         this.userId = data.body.host.id
         this.$router.push({name: 'Classes', params: {id: data.body.host.id}})
+        this.$bus.$emit('logged')
       })
     }
   }

@@ -43,6 +43,13 @@ export default {
       required: true
     }
   },
+  created () {
+    console.log('created')
+    this.$bus.$on('logged', () => {
+      console.log('created () in header triggered.')
+      window.location.reload()
+    })
+  },
   mounted () {
     this.signedIn()
   },

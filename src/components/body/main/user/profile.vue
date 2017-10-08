@@ -10,23 +10,6 @@
 
         <div class="column">
           <p class="has-text-centersied title-padding">
-
-          </p>
-          <!-- <div class="signup-lnk">
-            <button @click="newClass = !newClass" class="button is-primary is-smedium login-btn">New Class Form</button>
-          </div>
-
-          <form class="">
-            <div class="">
-                <input v-show="newClass" v-model="titled" class="input is-large" type="text" placeholder="Class Name">
-            </div>
-
-            <div class="" v-show="newClass">
-              <button @click.prevent="formHandler" class="button is-primary is-smedium login-btn" to="/Classes">Add Class</button>
-            </div>
-          </form> -->
-
-          <p class="has-text-centersied title-padding">
             <h1 class="title is-2"><u>{{this.profileName}}'s Class List</u></h1>
               <nav class="panel">
                 <div class="panel-block">
@@ -105,6 +88,7 @@ export default {
       console.log(localStorage.name)
       this.$router.push({name: 'Login'})
       this.$forceUpdate()
+      this.$bus.$emit('logged')
     },
     post: function () {
       console.log(this.titled)

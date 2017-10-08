@@ -4,8 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VueRouter from 'vue-router'
+import EventBus from './EventBus'
 //  import Routes from './routes'
 import VueResource from 'vue-resource'
+
+Vue.prototype.$bus = EventBus
+
 Vue.use(VueRouter)
 Vue.use(VueResource)
 Vue.config.productionTip = false
