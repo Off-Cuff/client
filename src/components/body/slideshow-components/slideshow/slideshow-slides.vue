@@ -4,7 +4,11 @@
       <br>
       <h1 class="title is-1 tit">CONGRATS</h1>
       <h2 class="title is-1">You made it!</h2>
+
       <button class="button is-primary btn-pad is-large" id="show-modal" @click="showModal = true">Want another?</button>
+      <div class="">
+        <a @click="go">back</a>
+      </div>
         <div class="landing-buttons">
         <!-- <router-link to="/" class="btm-pad button is-primary is-large">
 
@@ -25,6 +29,12 @@ export default {
   data () {
     return {
       showModal: false
+    }
+  },
+  methods: {
+    go () {
+      clearInterval(this.timerId)
+      this.$router.go(-2)
     }
   },
   mounted () {

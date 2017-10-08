@@ -79,8 +79,7 @@ export default {
         console.log('name', localStorage.name)
         localStorage.email = data.body.host.email
         console.log('email', localStorage.email)
-        alert('Login Successful!')
-        // console.log('long', localStorage.token, ' ', localStorage.id, ' ', localStorage.name, ' ', localStorage.email)
+        console.log('long', localStorage.token, ' ', localStorage.id, ' ', localStorage.name, ' ', localStorage.email)
         this.userId = data.body.host.id
         this.$router.push({name: 'Classes', params: {id: data.body.host.id}})
       })

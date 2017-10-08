@@ -79,7 +79,7 @@ li{
   list-style: none;
 },
 .content{
-  padding: 3%;
+  padding-top: 3%;
 }
 
 

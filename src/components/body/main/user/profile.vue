@@ -5,6 +5,7 @@
       <div class="columns">
         <div class="column is-one-third">
           <a @click="go">back</a>
+            <a @click="clearLocalStorage">logout?</a>
         </div>
 
         <div class="column">
@@ -97,6 +98,13 @@ export default {
     go () {
       clearInterval(this.timerId)
       this.$router.go(-1)
+    },
+    clearLocalStorage: function () {
+      console.log('called clear')
+      window.localStorage.clear()
+      console.log(localStorage.name)
+      this.$router.push({name: 'Login'})
+      this.$forceUpdate()
     },
     post: function () {
       console.log(this.titled)

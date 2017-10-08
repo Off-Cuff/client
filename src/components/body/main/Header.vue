@@ -6,15 +6,20 @@
             <div class="navbar-start">
               <!-- navbar items -->
                 <router-link to="/">
-                    <h1 class="title is-1 navbar-brand">{{ title }}</h1>
+                    <span class="noWrap title is-1 navbar-brand">{{ title }}</span>
                 </router-link>
             </div>
             <div class="navbar-end">
               <!-- navbar items -->
                 <h1 class="navbar-item menu is-size-5 has-text-weight-semibold">
                   <router-link to="/about"><\About\></router-link><p>--</p>
-                  <router-link to="/login"><\Log-in\></router-link><p>--</p>
-                  <a href="#"><\Premium\></a>
+                  <div v-show="this.showLogged">
+                    <router-link to="/host/1/Classes"><\Hi, {{ nameUser }}\></router-link>
+                  </div>
+                  <div v-show="!this.showLogged">
+                    <router-link to="/login"><\Log-in\></router-link>
+                  </div>
+                  <p>--</p><router-link to="/Premium"><\Premium\></router-link>
                 </h1>
             </div>
           </div>
@@ -25,10 +30,32 @@
 
 <script>
 export default {
+  data () {
+    return {
+      showLogged: false,
+      nameUser: localStorage.name,
+      userId: localStorage.id
+    }
+  },
   props: {
     title: {
       type: String,
       required: true
+    }
+  },
+  mounted () {
+    this.signedIn()
+  },
+  methods: {
+    signedIn: function () {
+      console.log('name:', this.nameUser)
+      if (localStorage.id) {
+        this.showLogged = true
+        console.log('true')
+      } else {
+        this.showLogged = false
+        console.log('false')
+      }
     }
   }
 }
@@ -38,13 +65,18 @@ export default {
 <!-- <style lang="scss" src="bulma"></style> -->
 
 <style scoped>
+  .noWrap{
+    white-space: nowrap;
+    z-index: 1;
+    overflow: visible;
+  }
   .title{
-    padding-left: 15%
+    padding-left: 15%;
   }
   h1{
     margin-top:-3%;
     opacity: inherit;
-    padding-right: 15px;
+    padding-right: 12px;
   }
   header{
     margin-top: 1vh;
@@ -56,9 +88,9 @@ export default {
     background-color: off-white;
   }
   .menu{
-    /*padding-left:35%;*/
+    padding-left: 5%;
     padding-top: 7%;
-    padding-right: 10em;
+    padding-right: 23%;
     padding-bottom: 5%;
     letter-spacing: 3px;
   }

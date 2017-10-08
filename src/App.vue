@@ -13,7 +13,8 @@ import Footer from './components/Body/Main/Footer.vue'
 export default {
   data () {
     return {
-      title: 'Off-the-Cuff'
+      title: 'Off-the-Cuff',
+      name: localStorage.name
     }
   },
   components: {

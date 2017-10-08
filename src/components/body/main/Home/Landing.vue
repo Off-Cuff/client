@@ -3,8 +3,8 @@
       <div class="container">
 
           <h1 class="landing-tag">
-            <span>A new way to Speak </span>
-            <span class='spacer'> </span>
+            <span class="noWrap">A new way to Speak </span>
+            <span class="spacer noWrap"> </span>
               <br />
             <span class='spacer'> </span>
             <span>A new way to Train</span>
@@ -102,6 +102,11 @@ h1 span.spacer {
 }
 .space{
   padding:4vh;;
+}
+.noWrap{
+  white-space: nowrap;
+  z-index: 1;
+  overflow: visible;
 }
 
 </style>
